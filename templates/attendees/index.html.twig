@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Attendees index{% endblock %}
+
+{% block body %}
+    <h1>Attendees index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Email</th>
+                <th>Company</th>
+                <th>Tel</th>
+                <th>Country</th>
+                <th>Job</th>
+                <th>Photo</th>
+                <th>CheckedIn</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for attendee in attendees %}
+            <tr>
+                <td>{{ attendee.id }}</td>
+                <td>{{ attendee.FirstName }}</td>
+                <td>{{ attendee.LastName }}</td>
+                <td>{{ attendee.Email }}</td>
+                <td>{{ attendee.Company }}</td>
+                <td>{{ attendee.Tel }}</td>
+                <td>{{ attendee.Country }}</td>
+                <td>{{ attendee.Job }}</td>
+                <td>{{ attendee.Photo }}</td>
+                <td>{{ attendee.CheckedIn ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('attendees_show', {'id': attendee.id}) }}">show</a>
+                    <a href="{{ path('attendees_edit', {'id': attendee.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('attendees_new') }}">Create new</a>
+{% endblock %}

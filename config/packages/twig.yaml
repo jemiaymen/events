@@ -1,0 +1,27 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+
+
+    globals:
+        lang : Language
+        atttype : attendee type
+        home : home page
+        evnt : Event
+        createnew : Create new
+        sv : Save
+        edt : Edit
+        nf : Not found
+        del : Delete
+        clo : Close
+        delmsg : Are you sure you want to delete this
+        atd : Attendee
+        nm : Name
+        prx : Price
+        atdl : AttendeeLimit
+        miwsh : MinWorkshops
+        mawsh : MaxWorkshops
+        alwe : Allow Edit
+        alwp : Allow Public Registration
+        nw : New

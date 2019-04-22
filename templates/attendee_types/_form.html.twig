@@ -1,0 +1,47 @@
+{{ form_start(form, {'attr': {'class': 'form-horizontal form-material'}}) }}
+    <div class="form-group">
+        <div class="col-md-12">
+            {{ form_row(form.Name , {'attr': {'class': 'form-control form-control-line'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            {{ form_row(form.Price, {'attr': {'class': 'form-control form-control-line'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            {{ form_row(form.AttendeeLimit, {'attr': {'class': 'form-control form-control-line'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            {{ form_row(form.MinWorkshops, {'attr': {'class': 'form-control form-control-line'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            {{ form_row(form.MaxWorkshops, {'attr': {'class': 'form-control form-control-line'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            {{ form_row(form.Description, {'attr': {'class': 'form-control form-control-line'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            {{ form_row(form.AllowEdit, {'attr': {'class': 'form-control form-control-line'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            {{ form_row(form.AllowPublicRegistration, {'attr': {'class': 'form-control form-control-line'}}) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-12">
+            <button class="btn btn-success">{{ sv | trans}}</button>
+        </div>
+    </div>
+{{ form_end(form) }}

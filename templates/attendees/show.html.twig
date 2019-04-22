@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Attendees{% endblock %}
+
+{% block body %}
+    <h1>Attendees</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ attendee.id }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ attendee.FirstName }}</td>
+            </tr>
+            <tr>
+                <th>LastName</th>
+                <td>{{ attendee.LastName }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ attendee.Email }}</td>
+            </tr>
+            <tr>
+                <th>Company</th>
+                <td>{{ attendee.Company }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ attendee.Tel }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ attendee.Country }}</td>
+            </tr>
+            <tr>
+                <th>Job</th>
+                <td>{{ attendee.Job }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ attendee.Photo }}</td>
+            </tr>
+            <tr>
+                <th>CheckedIn</th>
+                <td>{{ attendee.CheckedIn ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('attendees_index') }}">back to list</a>
+
+    <a href="{{ path('attendees_edit', {'id': attendee.id}) }}">edit</a>
+
+    {{ include('attendees/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} User Profile {% endblock %}
+
+
+{% block breadcrumb %}
+
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">Profile</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ path('app_homepage') }}">Home</a></li>
+                                <li class="breadcrumb-item active">User Profile</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+{% endblock %}
+
+
+
+{% block body %}
+                <div class="row">
+
+                    <div class="col-lg-4 col-xlg-3 col-md-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <center class="m-t-30"> 
+                                    <h4 class="card-title m-t-10">{{ app.user.FirstLastName }}</h4>
+                                    <h6 class="card-subtitle">{{ app.user.Ste }}</h6>
+                                    <div class="row text-center justify-content-md-center">
+                                        <div class="col-4"><a href=" {{ path('app_events') }} " class="link"><i class="icon-people"></i> <font class="font-medium">0</font></a></div>
+                                        <div class="col-4"><a href=" {{ path('app_events') }} " class="link"><i class="icon-calender"></i> <font class="font-medium">0</font></a></div>
+                                    </div>
+                                </center>
+                            </div>
+                            <div><hr></div>
+                            <div class="card-body"> 
+                                <small class="text-muted">Email address </small>
+                                <h6>{{ app.user.Email }}</h6> 
+                                <small class="text-muted p-t-30 db">Phone</small>
+                                <h6>{{ app.user.Tel }}</h6>
+                                <div><hr></div>
+                                <small class="text-muted p-t-30 db">Social Media</small>
+                                <br/>
+                                <button class="btn btn-circle btn-secondary"><i class="fab fa-facebook-f"></i></button>
+                                <button class="btn btn-circle btn-secondary"><i class="fab fa-twitter"></i></button>
+                                <button class="btn btn-circle btn-secondary"><i class="fab fa-youtube"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                        <div class="card">
+                            <ul class="nav nav-tabs profile-tab" role="tablist">
+                                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Profile</a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#editpassword" role="tab">Password</a> </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="profile" role="tabpanel">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 col-xs-6 b-r"> <strong>Full Name</strong>
+                                                <br>
+                                                <p class="text-muted">{{ app.user.FirstLastName }}</p>
+                                            </div>
+                                            <div class="col-md-4 col-xs-6 b-r"> <strong>Mobile</strong>
+                                                <br>
+                                                <p class="text-muted">{{ app.user.Tel }}</p>
+                                            </div>
+                                            <div class="col-md-4 col-xs-6 b-r"> <strong>Email</strong>
+                                                <br>
+                                                <p class="text-muted">{{ app.user.Email }}</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <p class="m-t-30">
+                                        {{ news }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="settings" role="tabpanel">
+                                    <div class="card-body">
+
+                                        {{ form_start(EditForm, {'attr': {'class': 'form-horizontal form-material'}}) }}
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    {{ form_row(EditForm.username , {'attr': {'class': 'form-control form-control-line'}}) }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    {{ form_row(EditForm.Email, {'attr': {'class': 'form-control form-control-line'}}) }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    {{ form_row(EditForm.FirstLastName, {'attr': {'class': 'form-control form-control-line'}}) }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    {{ form_row(EditForm.Tel, {'attr': {'class': 'form-control form-control-line'}}) }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    {{ form_row(EditForm.Ste, {'attr': {'class': 'form-control form-control-line'}}) }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <button class="btn btn-success">Update Profile</button>
+                                                </div>
+                                            </div>
+                                        {{ form_end(EditForm) }}
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="editpassword" role="tabpanel">
+                                    <div class="card-body">
+
+                                        {{ form_start(ChangePasswordForm, {'attr': {'class': 'form-horizontal form-material'}}) }}
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    {{ form_row(ChangePasswordForm.plainPassword.first , {'attr': {'class': 'form-control form-control-line'}}) }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    {{ form_row(ChangePasswordForm.plainPassword.second, {'attr': {'class': 'form-control form-control-line'}}) }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-12">
+                                                    <button class="btn btn-success">Change Password</button>
+                                                </div>
+                                            </div>
+                                        {{ form_end(ChangePasswordForm) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+{% endblock %}

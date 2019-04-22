@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ atttype | trans}} {% endblock %}
+
+
+
+
+{% block breadcrumb %}
+
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">{{ atttype | trans}}</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ path('app_homepage') }}">{{ home | trans }}</a></li>
+                                <li class="breadcrumb-item"><a href="{{ path('app_events_detail',{'id' : id}) }}">{{ evnt| trans }}</a></li>
+                                <li class="breadcrumb-item active">{{ atttype | trans }}</li>
+                            </ol>
+                            <a href="{{ path('app_attendee_types_new',{'id' : id}) }}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i>{{ createnew | trans}}</a> 
+                        </div>
+                    </div>
+                </div>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-8 col-xlg-9 col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th> {{ nm | trans }} </th>
+                                <td>{{ attendee_type.Name }}</td>
+                            </tr>
+                            <tr>
+                                <th> {{ prx | trans }} </th>
+                                <td>{{ attendee_type.Price }}</td>
+                            </tr>
+                            <tr>
+                                <th> {{ atdl | trans }} </th>
+                                <td>{{ attendee_type.AttendeeLimit }}</td>
+                            </tr>
+                            <tr>
+                                <th> {{ miwsh | trans }} </th>
+                                <td>{{ attendee_type.MinWorkshops }}</td>
+                            </tr>
+                            <tr>
+                                <th> {{ mawsh | trans }} </th>
+                                <td>{{ attendee_type.MaxWorkshops }}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td>{{ attendee_type.Description }}</td>
+                            </tr>
+                            <tr>
+                                <th> {{ alwe | trans }} </th>
+                                <td>{{ attendee_type.AllowEdit ? 'Yes' : 'No' }}</td>
+                            </tr>
+                            <tr>
+                                <th> {{ alwp | trans }} </th>
+                                <td>{{ attendee_type.AllowPublicRegistration ? 'Yes' : 'No' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <a href="{{ path('app_attendee_types_edit', {'id': id , 'idt' : attendee_type.id }) }}" class="btn btn-info">{{ edt | trans}}</a>
+                        </div>
+                    </div>
+                    
+                    {{ include('attendee_types/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

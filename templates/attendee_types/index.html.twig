@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ atttype | trans}} {% endblock %}
+
+
+
+
+{% block breadcrumb %}
+
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">{{ atttype | trans}}</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ path('app_homepage') }}">{{ home | trans }}</a></li>
+                                <li class="breadcrumb-item"><a href="{{ path('app_events_detail',{'id' : id}) }}">{{ evnt| trans }}</a></li>
+                                <li class="breadcrumb-item active">{{ atttype | trans }}</li>
+                            </ol>
+                            <a href="{{ path('app_attendee_types_new',{'id' : id}) }}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i>{{ createnew | trans}}</a> 
+                        </div>
+                    </div>
+                </div>
+{% endblock %}
+
+{% block body %}
+                <div class="row">
+
+                {% for type in attendee_types %}
+
+                    <div class="col-lg-4 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="{{path('app_attendee_types_detail' , {'idt': type.id,'id': id })}}">{{ type.Name }} </a></h5>
+                                <div class="row">
+                                    <div class="col-6  m-t-30">
+                                        <h1 class="text-info">{{type.Price}}</h1> 
+                                    </div>
+                                    <div class="col-12">
+                                        <br />
+                                        <h6 >limit {{ type.AttendeeLimit }}</h6> 
+                                        
+                                        {% if type.Description %}
+                                        <h5 class="text-muted"> {{ type.Description }}</h5>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% else %}
+                    <h4>{{ nf | trans}} </h4>
+                {% endfor %}
+                    
+                </div>
+{% endblock %}

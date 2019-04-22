@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Events{% endblock %}
+
+{% block breadcrumb %}
+
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">Edit Events</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ path('app_homepage') }}">Home</a></li>
+                                <li class="breadcrumb-item active">Edit Events</li>
+                            </ol>
+                            <a href="{{ path('app_events_new') }}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</a> 
+                        </div>
+                    </div>
+                </div>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-8 col-xlg-9 col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    {{ include('events/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+                    {{ include('events/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

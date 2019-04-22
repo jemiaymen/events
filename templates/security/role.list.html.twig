@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Roles {% endblock %}
+
+
+{% block breadcrumb %}
+
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">Roles</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ path('app_homepage') }}">Home</a></li>
+                                <li class="breadcrumb-item active">All User</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+{% endblock %}
+
+
+
+{% block body %}
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Column -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">All Users</h4>
+                                <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Username</th>
+                                            <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">First Last Name</th>
+                                            <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="2">Email</th>
+                                            <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="1">Tel</th>
+                                            <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Roles</th>
+                                            <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for user in Users %}
+                                        <tr>
+                                            <td class="title">{{ user.username|e }}</td>
+                                            <td class="title">{{ user.FirstLastName|e }}</td>
+                                            <td class="title">{{ user.Email|e }}</td>
+                                            <td class="title">{{ user.Tel|e }}</td>
+                                            <td>
+                                            {% for role in user.roles %}
+                                                <p>{{ role }}</p>
+                                            {% endfor %}
+                                            </td>
+                                            <td class="title"><a class="link" href="/user/role/{{ user.id }}">edit</a></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+{% endblock %}

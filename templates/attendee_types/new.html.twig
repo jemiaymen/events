@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ createnew | trans }} {{ atttype | trans}} {% endblock %}
+
+
+
+
+{% block breadcrumb %}
+
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">{{ createnew | trans }} {{ atttype | trans}}</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ path('app_homepage') }}">{{ home | trans }}</a></li>
+                                <li class="breadcrumb-item"><a href="{{ path('app_events_detail',{'id' : id}) }}">{{ evnt| trans }}</a></li>
+                                <li class="breadcrumb-item active"><a href="{{ path('app_attendee_types',{'id' : id}) }}">{{ atttype | trans }}</a></li>
+                            </ol>
+                            <a href="{{ path('app_attendee_types_new',{'id' : id}) }}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i>{{ createnew | trans}}</a> 
+                        </div>
+                    </div>
+                </div>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-8 col-xlg-9 col-md-7">
+            <div class="card">
+                <div class="card-body"> 
+                    {{ include('attendee_types/_form.html.twig') }}  
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

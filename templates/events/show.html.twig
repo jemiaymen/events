@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Event Detail{% endblock %}
+
+{% block breadcrumb %}
+
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">Event Detail</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ path('app_homepage') }}">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{{ path('app_events') }}">Events</a></li>
+                                <li class="breadcrumb-item active">Event Detail</li>
+                            </ol>
+                            <a href="{{ path('app_events_new') }}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</a> 
+                        </div>
+                    </div>
+                </div>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-8 col-xlg-9 col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Name</th>
+                                <td>{{ event.Name }}</td>
+                            </tr>
+                            <tr>
+                                <th>StartDate</th>
+                                <td>{{ event.StartDate ? event.StartDate|date('j M Y H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>EndDate</th>
+                                <td>{{ event.EndDate ? event.EndDate|date('j M Y H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Country</th>
+                                <td>{{ event.Country }}</td>
+                            </tr>
+                            <tr>
+                                <th>Logo</th>
+                                <td>
+                                {% if event.Logo %}
+                                    <img class="card-img-top img-responsive" src="/img/{{ event.Logo }}" alt="logo" />
+                                {% endif %}
+                                
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Banner</th>
+                                <td>
+                                {% if event.Banner %}
+                                    <img class="card-img-top img-responsive" src="/img/{{ event.Banner }}" alt="Banner" />
+                                {% endif %}
+                                
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Language</th>
+                                <td>{{ event.Language }}</td>
+                            </tr>
+                            <tr>
+                                <th>Location</th>
+                                <td>{{ event.Location }}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td>{{ event.Description }}</td>
+                            </tr>
+                            <tr>
+                                <th>Budget</th>
+                                <td>{{ event.Budget }}</td>
+                            </tr>
+                            <tr>
+                                <th>OwnerName</th>
+                                <td>{{ event.OwnerName }}</td>
+                            </tr>
+                            <tr>
+                                <th>OwnerMail</th>
+                                <td>{{ event.OwnerMail }}</td>
+                            </tr>
+                            <tr>
+                                <th>Active</th>
+                                <td>{{ event.Active ? 'Yes' : 'No' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Currency</th>
+                                <td>{{ event.Currency }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <a href="{{ path('app_events_edit', {'id': event.id}) }}" class="btn btn-info">edit</a>
+                        </div>
+                    </div>
+                    
+                    {{ include('events/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

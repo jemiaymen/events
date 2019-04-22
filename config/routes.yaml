@@ -1,0 +1,13 @@
+
+app_homepage:
+   path: /{_locale}
+   controller: App\Controller\DefaultController::index
+   requirements:
+      _locale: en|fr
+   defaults: { _locale: en}
+
+# not implement yet
+app_inbox:
+   path : /inbox
+   controller: App\Controller\DefaultController::index
+
